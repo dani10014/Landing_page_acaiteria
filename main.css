@@ -64,6 +64,22 @@ main .card{
 main .card img{
     width: 100%;
 }
+main .alerta{
+    display: none;
+    padding: 15px;
+    border-radius: 15px;
+    transition: 0.5s ease-in-out;
+    position: fixed;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    top: 50vh;
+    background-color:  rgb(75, 0, 119);
+}
+.alerta.alerta-ativo{
+    display: flex;
+
+}
 @media(min-width: 768px){
     main{
         margin-top: 330px;
