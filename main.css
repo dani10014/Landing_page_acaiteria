@@ -78,7 +78,7 @@ main .alerta{
     margin: 0 auto;
     top: 80vh;
     justify-content: center;
-    background-color:  rgb(75, 0, 119);
+    background-color:  rgba(75, 0, 119, 0.781);
 }
 .alerta.alerta-ativo{
     display: flex;
