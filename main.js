@@ -8,6 +8,6 @@ botoesAdicionarCarrinho.forEach(button => {
         blocoAlerta.classList.add("alerta-ativo")
         setTimeout(() => {
             blocoAlerta.classList.remove("alerta-ativo")
-        }, 700);
+        }, 1000);
     });
 });
