@@ -34,6 +34,7 @@ header .texto-abaixo-cabecalho{
 } 
 header .texto-abaixo-cabecalho p{
     padding-bottom: 10px;
+    text-transform:capitalize;
 }
 main{
     margin-top: 200px;
@@ -82,7 +83,20 @@ main .alerta{
 }
 .alerta.alerta-ativo{
     display: flex;
+}
+.slick-prev:before, .slick-next:before {
+    color:  rgb(75, 0, 119) !important; 
+    font-size: 30px !important; /* Opcional: aumenta o tamanho da seta */
+    opacity: 1; /* Garante que ela não fique transparente */
+}
+.slick-prev {
+    left: 5px !important;
+    z-index: 10;           
+}
 
+.slick-next {
+    right: 5px !important;
+    z-index: 10;
 }
 @media(min-width: 768px){
     main{
