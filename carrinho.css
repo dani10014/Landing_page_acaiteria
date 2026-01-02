@@ -24,6 +24,8 @@ main .menu{
     width: 100%;
     height: auto;
     background-color: black;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 main .menu .container-valor{
     display: flex;
