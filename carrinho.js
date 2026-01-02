@@ -32,4 +32,18 @@ produtos.forEach(produto => {
                     ;
                 container.innerHTML += html;
 });
+
+let total = 0;
+produtos.forEach(produto => {
+    // Remove "R$", espaços e troca vírgula por ponto para o JS entender como número
+    let precoTexto = produto.preco.replace("R$", "").replace(",", ".").trim();
+    let valor = parseFloat(precoTexto);
     
+    // Se a conversão deu certo, soma ao total
+    if (!isNaN(valor)) {
+        total += valor;
+    }
+    document.getElementById("valor-total").innerHTML = `R$${total.toFixed(2)}`;
+});
+
+console.log("Total calculado:", total);
