@@ -4,7 +4,7 @@ let container = document.getElementById("lista-produtos");
 if(produtos.length === 0){
     let mensagen = `<div class="row">
                         <div class="col-12">
-                        <h1 class="text-center">Carrinho esta vazio!</h1>
+                        <h1 class="text-center display-6">Carrinho esta vazio!</h1>
                         </div>
                     </div>`
                     ;
