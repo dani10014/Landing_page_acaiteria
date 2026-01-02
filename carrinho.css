@@ -14,6 +14,9 @@ header .container-cabecalho{
     margin: 0 20px;
     height: 90px;
 }
+body {
+    padding-bottom: 300px;
+}
 main .menu{
     position: fixed;
     bottom: 0;

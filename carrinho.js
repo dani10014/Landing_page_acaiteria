@@ -1,11 +1,17 @@
 let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
 let container = document.getElementById("lista-produtos");
 
-console.log(produtos)
-
-produtos.forEach(produto => {
-    let html =`<div class="row">
-                    <div class="col-12">
+if(produtos.length === 0){
+    let mensagen = `<div class="row">
+                        <div class="col-12">
+                        <h1 class="text-center">Carrinho esta vazio!</h1>
+                        </div>
+                    </div>`
+                    ;
+                container.innerHTML += mensagen;
+}
+produtos.forEach((produto, index) => {
+    let html =` <div class="col-12 col-md-8">
                         <div class="card mb-4">
                         <div class="card-body">
                         <div class="row align-items-center">
@@ -28,22 +34,32 @@ produtos.forEach(produto => {
                                 </div>
                             </div>
                         </div>
+                        <button class="btn btn-danger w-100 excluir" data-index="${index}">Excluir</button>
                     </div>`
                     ;
                 container.innerHTML += html;
 });
 
+
 let total = 0;
 produtos.forEach(produto => {
-    // Remove "R$", espaços e troca vírgula por ponto para o JS entender como número
     let precoTexto = produto.preco.replace("R$", "").replace(",", ".").trim();
     let valor = parseFloat(precoTexto);
     
-    // Se a conversão deu certo, soma ao total
     if (!isNaN(valor)) {
         total += valor;
     }
     document.getElementById("valor-total").innerHTML = `R$${total.toFixed(2)}`;
 });
 
-console.log("Total calculado:", total);
+
+let botaoExcluir = document.querySelectorAll(".excluir");
+
+botaoExcluir.forEach(button => {
+    button.addEventListener("click", (event) => {
+        let index = event.target.getAttribute("data-index");
+        produtos.splice(index, 1);
+        localStorage.setItem('carrinho', JSON.stringify(produtos));
+        location.reload();
+    })
+})
