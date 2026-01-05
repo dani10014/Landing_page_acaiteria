@@ -43,7 +43,8 @@ main .card-de-pagamento{
     width: 100%;
     left: 0;
     top: 40px;
-    height: 100%;
+    height: calc(100% - 40px);
+    overflow-y: auto;
     transform: translateY(100%);
     transition: all 0.5s ease-in-out;
 }
