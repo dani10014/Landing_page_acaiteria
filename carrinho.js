@@ -1,5 +1,9 @@
 let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
 let container = document.getElementById("lista-produtos");
+let botaoConfirmarPagamento = document.querySelector(".confirmar-pagamento");
+let cardPagamento = document.querySelector(".card-de-pagamento");
+let fecharMenuPagamento = document.querySelector(".btn-fechar-pagamento");
+let totalDaCompra = document.querySelector(".total-a-pagar");
 
 if(produtos.length === 0){
     let mensagen = `<div class="row">
@@ -40,7 +44,6 @@ produtos.forEach((produto, index) => {
                 container.innerHTML += html;
 });
 
-
 let total = 0;
 produtos.forEach(produto => {
     let precoTexto = produto.preco.replace("R$", "").replace(",", ".").trim();
@@ -52,7 +55,6 @@ produtos.forEach(produto => {
     document.getElementById("valor-total").innerHTML = `R$${total.toFixed(2)}`;
 });
 
-
 let botaoExcluir = document.querySelectorAll(".excluir");
 
 botaoExcluir.forEach(button => {
@@ -63,3 +65,12 @@ botaoExcluir.forEach(button => {
         location.reload();
     })
 })
+
+botaoConfirmarPagamento.addEventListener("click", () => {
+        cardPagamento.classList.add("ativo");
+});
+fecharMenuPagamento.addEventListener("click", () => {
+    cardPagamento.classList.remove("ativo");
+});
+
+totalDaCompra.innerText = `R$${total.toFixed(2)}`;

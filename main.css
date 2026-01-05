@@ -66,11 +66,13 @@ main .card img{
     width: 100%;
 }
 main .alerta{
-    display: none;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
     padding: 10px;
     text-align: center;
     border-radius: 20px;
-    transition: 0.5s ease-in-out;
     position: fixed;
     color: #fff;
     width: 90%;
@@ -82,7 +84,8 @@ main .alerta{
     background-color:  rgba(75, 0, 119, 0.781);
 }
 .alerta.alerta-ativo{
-    display: flex;
+    opacity: 1;
+    visibility: visible;
 }
 .slick-prev:before, .slick-next:before {
     color:  rgb(75, 0, 119) !important; 
@@ -93,7 +96,6 @@ main .alerta{
     left: 5px !important;
     z-index: 10;           
 }
-
 .slick-next {
     right: 5px !important;
     z-index: 10;

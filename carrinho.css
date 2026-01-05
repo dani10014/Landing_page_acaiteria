@@ -37,3 +37,20 @@ main .menu .container-valor{
 main .menu .container-valor button{
     margin: 15px;
 }
+main .card-de-pagamento{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    left: 0;
+    top: 40px;
+    height: 100%;
+    transform: translateY(100%);
+    transition: all 0.5s ease-in-out;
+}
+main .ativo{
+    transform: translatey(0);
+}
+main .qr-code{
+    object-fit: scale-down;
+    height: 200px;
+}
