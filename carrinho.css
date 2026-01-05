@@ -49,7 +49,7 @@ main .card-de-pagamento{
     transition: all 0.5s ease-in-out;
 }
 main .ativo{
-    transform: translatey(0);
+    transform: translateY(0);
 }
 main .qr-code{
     object-fit: scale-down;
