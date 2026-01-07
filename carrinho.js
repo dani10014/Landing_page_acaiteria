@@ -5,6 +5,10 @@ let cardPagamento = document.querySelector(".card-de-pagamento");
 let fecharMenuPagamento = document.querySelector(".btn-fechar-pagamento");
 let totalDaCompra = document.querySelector(".total-a-pagar");
 
+
+
+
+
 if(produtos.length === 0){
     let mensagen = `<div class="row">
                         <div class="col-12">
@@ -13,6 +17,7 @@ if(produtos.length === 0){
                     </div>`
                     ;
                 container.innerHTML += mensagen;
+    botaoConfirmarPagamento.style.display = "none";
 }
 produtos.forEach((produto, index) => {
     let html =` <div class="col-12 col-md-8">
@@ -29,11 +34,11 @@ produtos.forEach((produto, index) => {
                                         <li>Morango</li>
                                         <li>Kiwi</li>
                                     </ul>
-                                    <h5 class="text-center mb-3" id="valor">${produto.preco}</h5>
+                                    <h5 class="text-center mb-3 valor" data-preco="${produto.preco}">${produto.preco}</h5>
                                     <div class="valor-e-quantidade d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-secondary">Menos</button>
-                                        <span class="btn btn-info">1</span>
-                                        <button class="btn btn-secondary">Mais</button>
+                                        <button class="btn btn-secondary menos">Menos</button>
+                                        <span class="btn btn-info quantidade">1</span>
+                                        <button class="btn btn-secondary mais">Mais</button>
                                     </div>
                                 </div>
                             </div>
@@ -67,10 +72,60 @@ botaoExcluir.forEach(button => {
 })
 
 botaoConfirmarPagamento.addEventListener("click", () => {
-        cardPagamento.classList.add("ativo");
+        cardPagamento.classList.add("ativo-card-de-pagamento");
 });
 fecharMenuPagamento.addEventListener("click", () => {
-    cardPagamento.classList.remove("ativo");
+    cardPagamento.classList.remove("ativo-card-de-pagamento");
 });
 
 totalDaCompra.innerText = `R$${total.toFixed(2)}`;
+
+
+let botaoAdicionarMais = document.querySelectorAll(".mais");
+let botaoRemover = document.querySelectorAll(".menos")
+
+botaoRemover.forEach(button => {
+    button.addEventListener("click", (event) => {
+        let quantidade = event.target.closest(".card").querySelector(".quantidade");
+        let quantidadeAtual = parseInt(quantidade.innerText);
+
+        if(quantidadeAtual === 1){
+            let blocoAlerta = document.querySelector(".alerta");
+            blocoAlerta.classList.add("ativo")
+            setTimeout(() => {
+                blocoAlerta.classList.remove("ativo");
+            }, 1000);
+        }
+        if(quantidadeAtual > 1){
+            quantidadeAtual--;
+            quantidade.innerText = quantidadeAtual;
+            let valorElement = event.target.closest(".card").querySelector(".valor");
+            let precoTexto = valorElement.getAttribute("data-preco").replace("R$", "").replace(",", ".").trim();
+            let valorUnitario = parseFloat(precoTexto);
+            total -= valorUnitario;
+            document.getElementById("valor-total").innerHTML = `R$${total.toFixed(2)}`;
+            totalDaCompra.innerText = `R$${total.toFixed(2)}`;
+            valorElement.innerText = `R$${(valorUnitario * quantidadeAtual).toFixed(2)}`;
+            
+        }
+        
+    });
+});
+
+botaoAdicionarMais.forEach(button => {
+    button.addEventListener("click", (event) => {
+        let quantidade = event.target.closest(".card").querySelector(".quantidade");
+        let quantidadeAtual = parseInt(quantidade.innerText);
+        quantidadeAtual++;
+        quantidade.innerText = quantidadeAtual;
+        let valorElement = event.target.closest(".card").querySelector(".valor");
+        let precoTexto = valorElement.getAttribute("data-preco").replace("R$", "").replace(",", ".").trim();
+        let valorUnitario = parseFloat(precoTexto);
+        total += valorUnitario;
+        document.getElementById("valor-total").innerHTML = `R$${total.toFixed(2)}`;
+        totalDaCompra.innerText = `R$${total.toFixed(2)}`;
+
+        valorElement.innerText = `R$${(valorUnitario * quantidadeAtual).toFixed(2)}`;
+
+    })
+});
