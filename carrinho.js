@@ -36,9 +36,9 @@ produtos.forEach((produto, index) => {
                                     </ul>
                                     <h5 class="text-center mb-3 valor" data-preco="${produto.preco}">${produto.preco}</h5>
                                     <div class="valor-e-quantidade d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-secondary menos">Menos</button>
+                                        <button class="btn btn-dark menos">Menos</button>
                                         <span class="btn btn-info quantidade">1</span>
-                                        <button class="btn btn-secondary mais">Mais</button>
+                                        <button class="btn btn-dark mais">Mais</button>
                                     </div>
                                 </div>
                             </div>
