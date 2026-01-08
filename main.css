@@ -63,10 +63,11 @@ main .container-conteudo-principal img{
 }
 main .card{
     box-shadow: 0px 5px 10px black;
-    border-radius: 10px
+    border-radius: 10px;
 }
 main .card img{
     width: 100%;
+    
 }
 main .alerta{
     display: flex;
@@ -103,6 +104,32 @@ main .alerta{
     right: 5px !important;
     z-index: 10;
 }
+.carousel-indicators [data-bs-target]{
+    background-color:rgb(75, 0, 119);
+    margin-top: 50px;
+}
+/* Estilos para padronizar o carrossel Sobre Nós */
+#meuCarrossel .card {
+    min-height: 550px; /* Garante que todos tenham pelo menos essa altura */
+    display: flex;
+    flex-direction: column;
+}
+#meuCarrossel .card img {
+    height: 250px; /* Força todas as imagens a terem a mesma altura */
+    object-fit: cover; /* Ajusta a imagem para preencher o espaço sem esticar */
+    border-radius: 5px 5px 0 0;
+}
+#meuCarrossel .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o botão para o final do card */
+}
+.secao-sobre-nos{
+    border-top-left-radius: 80px;
+    border-bottom-right-radius:80px ;
+    background-color:rgb(75, 0, 119);
+}
+
 @media(min-width: 768px){
     main{
         margin-top: 330px;
