@@ -2,7 +2,7 @@ let botoesAdicionarCarrinho = document.querySelectorAll(".adicionar-carrinho");
 let blocoAlerta = document.querySelector(".alerta");
 let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
 let quantidade = [];
-let produtoQueCliquei = document.querySelectorAll(".card-body")
+let produtoQueCliquei = document.querySelectorAll(".produto")
 let fecharCardEscolhido = document.querySelector(".fechar-card");
 let overlay = document.querySelector(".overlay");
 
@@ -28,7 +28,7 @@ botoesAdicionarCarrinho.forEach(button => {
 
 produtoQueCliquei.forEach(card => {
     card.addEventListener("click", (event) => {
-        
+
         if (event.target.classList.contains("slick-arrow")) {
             return;
         }
@@ -46,7 +46,7 @@ fecharCardEscolhido.addEventListener("click", () => {
         if(cardAtivo) cardAtivo.classList.remove("ativo-produto-apertado");
         fecharCardEscolhido.classList.remove("btn-ativo-card");
         overlay.classList.remove("ativo");
-        $('.carrosel').slick('setPosition'); // Atualiza o carrossel ao fechar
+        $('.carrosel').slick('setPosition'); 
 });
 
 overlay.addEventListener("click", () => {
@@ -54,7 +54,7 @@ overlay.addEventListener("click", () => {
     if(cardAtivo) cardAtivo.classList.remove("ativo-produto-apertado");
     fecharCardEscolhido.classList.remove("btn-ativo-card");
     overlay.classList.remove("ativo");
-    $('.carrosel').slick('setPosition'); // Atualiza o carrossel ao fechar pelo fundo
+    $('.carrosel').slick('setPosition');
 });
 
 $(document).ready(function() {
