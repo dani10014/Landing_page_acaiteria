@@ -67,7 +67,10 @@ main .card{
 }
 main .card img{
     width: 100%;
-    
+}
+.produto .carrosel img {
+    height: 200px;
+    object-fit: cover;
 }
 main .alerta{
     display: flex;
