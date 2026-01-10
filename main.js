@@ -2,11 +2,15 @@ let botoesAdicionarCarrinho = document.querySelectorAll(".adicionar-carrinho");
 let blocoAlerta = document.querySelector(".alerta");
 let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
 let quantidade = [];
-console.log(produtos)
+let produtoQueCliquei = document.querySelectorAll(".card-body")
+let fecharCardEscolhido = document.querySelector(".fechar-card");
+let overlay = document.querySelector(".overlay");
+
 
 botoesAdicionarCarrinho.forEach(button => {
     button.addEventListener("click", (event) => {
         blocoAlerta.classList.add("alerta-ativo")
+        event.stopPropagation();
         setTimeout(() => {
             blocoAlerta.classList.remove("alerta-ativo")
         }, 1000);
@@ -20,6 +24,34 @@ botoesAdicionarCarrinho.forEach(button => {
         produtos.push(produto)
         localStorage.setItem('carrinho', JSON.stringify(produtos));
     });
+});
+
+produtoQueCliquei.forEach(card => {
+    card.addEventListener("click", (event) => {
+        // Se o clique foi na seta do carrossel, não abre o card
+        if (event.target.classList.contains("slick-arrow")) {
+            return;
+        }
+        event.stopPropagation();
+        let cardEscolhido = event.target.closest(".card")
+        cardEscolhido.classList.add("ativo-produto-apertado");
+        fecharCardEscolhido.classList.add("btn-ativo-card");
+        overlay.classList.add("ativo");
+    })
+});
+
+fecharCardEscolhido.addEventListener("click", () => {
+        let cardAtivo = document.querySelector(".ativo-produto-apertado");
+        if(cardAtivo) cardAtivo.classList.remove("ativo-produto-apertado");
+        fecharCardEscolhido.classList.remove("btn-ativo-card");
+        overlay.classList.remove("ativo");
+});
+
+overlay.addEventListener("click", () => {
+    let cardAtivo = document.querySelector(".ativo-produto-apertado");
+    if(cardAtivo) cardAtivo.classList.remove("ativo-produto-apertado");
+    fecharCardEscolhido.classList.remove("btn-ativo-card");
+    overlay.classList.remove("ativo");
 });
 
 $(document).ready(function() {
