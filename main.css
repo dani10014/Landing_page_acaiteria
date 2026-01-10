@@ -8,6 +8,7 @@ body{
 }
 header{
     background-color: rgb(75, 0, 119);
+    padding-bottom: 60px;
 }
 header .container-cabecalho{
     display: flex;
@@ -35,19 +36,36 @@ header .texto-abaixo-cabecalho{
     justify-content: center;
     color: #bebebe;
 } 
+header #horario{
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    color: #fff;
+}
+.aberto-ativo{
+    color: rgb(255, 255, 255);
+    background-color: green;
+    border-radius: 10px;
+}
+.fechado-ativo{
+    color: #fff;
+    background-color: red;
+    border-radius: 10px;
+}
+
 header .texto-abaixo-cabecalho p{
     padding-bottom: 10px;
     text-transform:capitalize;
 }
 main{
-    margin-top: 200px;
+    margin-top: 160px;
 }
 main .container-conteudo-principal{
     display: flex;
     justify-content: center;
     position: absolute;
     background-color: #fff;
-    top: 120px;
+    top: 160px;
     z-index: 1;
     border-radius: 10px;
     padding-bottom: 10px;
@@ -139,7 +157,7 @@ main .alerta{
     z-index: 20;
     top: 10vh;
     right: 10vw;
-    height: 70vh;
+    height: 60vh;
     width: 80%;
 }
 .fechar-card{

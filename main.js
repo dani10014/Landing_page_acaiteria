@@ -5,7 +5,30 @@ let quantidade = [];
 let produtoQueCliquei = document.querySelectorAll(".produto")
 let fecharCardEscolhido = document.querySelector(".fechar-card");
 let overlay = document.querySelector(".overlay");
+let MensagemAberto = document.getElementById("aberto");
 
+
+function atualizarRelogio(){
+    let dataAtual = new Date();
+
+    let horaAtual = dataAtual.getHours(); 
+    
+    let relogioTexto = dataAtual.toLocaleTimeString("pt-BR", {hour: '2-digit', minute: '2-digit'});
+    document.getElementById("horario").innerHTML = relogioTexto;
+
+    if(horaAtual >= 12 && horaAtual < 22){
+        MensagemAberto.classList.add("aberto-ativo");
+        MensagemAberto.classList.remove("fechado-ativo"); // Importante remover a outra classe
+        MensagemAberto.innerHTML = "Estamos abertos!";
+    } else {
+        MensagemAberto.classList.remove("aberto-ativo");
+        MensagemAberto.classList.add("fechado-ativo");
+        MensagemAberto.innerHTML = "Estamos fechados!";
+    }
+}
+
+
+setInterval(atualizarRelogio, 1000);
 
 botoesAdicionarCarrinho.forEach(button => {
     button.addEventListener("click", (event) => {
