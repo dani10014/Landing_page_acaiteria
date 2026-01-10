@@ -28,7 +28,7 @@ botoesAdicionarCarrinho.forEach(button => {
 
 produtoQueCliquei.forEach(card => {
     card.addEventListener("click", (event) => {
-        // Se o clique foi na seta do carrossel, não abre o card
+        
         if (event.target.classList.contains("slick-arrow")) {
             return;
         }
@@ -37,6 +37,7 @@ produtoQueCliquei.forEach(card => {
         cardEscolhido.classList.add("ativo-produto-apertado");
         fecharCardEscolhido.classList.add("btn-ativo-card");
         overlay.classList.add("ativo");
+        $('.carrosel').slick('setPosition'); 
     })
 });
 
@@ -45,6 +46,7 @@ fecharCardEscolhido.addEventListener("click", () => {
         if(cardAtivo) cardAtivo.classList.remove("ativo-produto-apertado");
         fecharCardEscolhido.classList.remove("btn-ativo-card");
         overlay.classList.remove("ativo");
+        $('.carrosel').slick('setPosition'); // Atualiza o carrossel ao fechar
 });
 
 overlay.addEventListener("click", () => {
@@ -52,6 +54,7 @@ overlay.addEventListener("click", () => {
     if(cardAtivo) cardAtivo.classList.remove("ativo-produto-apertado");
     fecharCardEscolhido.classList.remove("btn-ativo-card");
     overlay.classList.remove("ativo");
+    $('.carrosel').slick('setPosition'); // Atualiza o carrossel ao fechar pelo fundo
 });
 
 $(document).ready(function() {

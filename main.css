@@ -64,7 +64,6 @@ main .container-conteudo-principal img{
 main .card{
     box-shadow: 0px 5px 10px black;
     border-radius: 10px;
-    transition: ease-in-out 0.5s;
 }
 main .card img{
     width: 100%;
@@ -135,10 +134,10 @@ main .alerta{
     position: fixed;
     justify-content: center;
     z-index: 20;
-    width: 50%;
     top: 10vh;
-    right: 14vw;
-    width: 70%;
+    right: 10vw;
+    height: 70vh;
+    width: 80%;
 }
 .fechar-card{
     display: none;
