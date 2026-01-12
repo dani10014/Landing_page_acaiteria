@@ -5,10 +5,6 @@ let cardPagamento = document.querySelector(".card-de-pagamento");
 let fecharMenuPagamento = document.querySelector(".btn-fechar-pagamento");
 let totalDaCompra = document.querySelector(".total-a-pagar");
 
-
-
-
-
 if(produtos.length === 0){
     let mensagen = `<div class="row">
                         <div class="col-12">
@@ -116,6 +112,7 @@ botaoAdicionarMais.forEach(button => {
     button.addEventListener("click", (event) => {
         let quantidade = event.target.closest(".card").querySelector(".quantidade");
         let quantidadeAtual = parseInt(quantidade.innerText);
+
         quantidadeAtual++;
         quantidade.innerText = quantidadeAtual;
         let valorElement = event.target.closest(".card").querySelector(".valor");

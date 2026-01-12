@@ -6,6 +6,7 @@ let produtoQueCliquei = document.querySelectorAll(".produto")
 let fecharCardEscolhido = document.querySelector(".fechar-card");
 let overlay = document.querySelector(".overlay");
 let MensagemAberto = document.getElementById("aberto");
+let modalMensagem = new bootstrap.Modal(document.getElementById("meuModal"));
 
 
 function atualizarRelogio(){
@@ -17,10 +18,12 @@ function atualizarRelogio(){
     document.getElementById("horario").innerHTML = relogioTexto;
 
     if(horaAtual >= 12 && horaAtual < 22){
+        modalMensagem.hide()
         MensagemAberto.classList.add("aberto-ativo");
-        MensagemAberto.classList.remove("fechado-ativo"); // Importante remover a outra classe
+        MensagemAberto.classList.remove("fechado-ativo");
         MensagemAberto.innerHTML = "Estamos abertos!";
     } else {
+        modalMensagem.show()
         MensagemAberto.classList.remove("aberto-ativo");
         MensagemAberto.classList.add("fechado-ativo");
         MensagemAberto.innerHTML = "Estamos fechados!";
