@@ -9,6 +9,19 @@ let MensagemAberto = document.getElementById("aberto");
 let modalMensagem = new bootstrap.Modal(document.getElementById("meuModal"));
 
 
+MensagemAberto.classList.add("aberto-ativo");
+function atualizarRelogio(){
+    let dataAtual = new Date();
+
+    let horaAtual = dataAtual.getHours(); 
+    
+    let relogioTexto = dataAtual.toLocaleTimeString("pt-BR", {hour: '2-digit', minute: '2-digit'});
+    document.getElementById("horario").innerHTML = relogioTexto;
+}
+setInterval(atualizarRelogio, 1000);
+
+
+/***** *
 function atualizarRelogio(){
     let dataAtual = new Date();
 
@@ -29,9 +42,8 @@ function atualizarRelogio(){
         MensagemAberto.innerHTML = "Estamos fechados!";
     }
 }
-
-
 setInterval(atualizarRelogio, 1000);
+*****/
 
 botoesAdicionarCarrinho.forEach(button => {
     button.addEventListener("click", (event) => {
